@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Inspector - Tree</title>
+    </head>
+    <body>
+        <ul>
+            <%
+                for (var i = 0; i < data.length; i++) {
+                var file = data[i];
+            %>
+            <li><a href="/tree<%- file.path %>"><%- file.name %></a></li>
+            <% } %>
+            </ul>
+    </body>
+</html>
