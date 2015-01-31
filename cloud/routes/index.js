@@ -53,6 +53,10 @@ var path = require('path');
                         });
                     }
                 });
+            } else {
+                res.render('error', {
+                    message : 'Unsupported file type',
+                });
             }
         });
     };
