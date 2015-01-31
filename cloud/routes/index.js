@@ -83,9 +83,22 @@ var path = require('path');
                         var data = [];
                         for (var i = 0; i < files.length; i++) {
                             var file = files[i];
+                            var stat = fs.statSync(path.join(req.path, file));
+                            var type = '?';
+
+                            if (stat.isDirectory()) {
+                                type = 'd';
+                            } else if (stat.isFile()) {
+                                type = 'f';
+                            } else if (stat.isSymbolicLink()) {
+                                type = 'l';
+                            } else {
+                                type = '?';
+                            }
 
                             data.push({
                                 name : file,
+                                type : type,
                                 path : path.join(req.path, file),
                             });
                         }
