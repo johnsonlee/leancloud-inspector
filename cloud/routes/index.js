@@ -97,17 +97,14 @@ var path = require('path');
                     }
                 });
             } else if (stats.isFile()) {
-                fs.readFile(req.path, { flag : 'r' }, function(err, data) {
-                    if (err) {
-                        res.render('error', {
-                            message : err,
-                        });
-                    } else {
-                        res.render('raw', {
-                            data : data,
-                            path : req.path,
-                        });
-                    }
+                res.type('text/plain');
+                res.sendfile(req.path, {
+                    maxAge : 3600000,
+                    root : '/',
+                }, function(err) {
+                    res.render('error', {
+                        message : err,
+                    });
                 });
             } else {
                 res.render('error', {
