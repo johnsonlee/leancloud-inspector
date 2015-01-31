@@ -2,15 +2,54 @@
     <head>
         <meta charset="utf-8" />
         <title>Inspector - Tree</title>
+        <style type="text/css">
+            html, body, p, ul, li {
+                margin : 0px;
+                padding : 0px;
+                font-family : 'Helvetica', 'Arial';
+            }
+
+            a {
+                color : #1a1a1a;
+                line-height : 25px;
+                display : block;
+                font-size : 13px;
+                padding : 2px 0px;
+                margin-left : 10px;
+                text-decoration : none;
+                border-bottom : 1px solid #eee;
+            }
+
+            ul {
+                margin : 0px;
+                padding : 0px;
+                list-style : none;
+            }
+
+            li {
+                margin : 0px;
+                padding : 0px;
+                border-left : 5px solid transparent;
+            }
+
+            li:hover {
+                border-left : 5px solid #9c000c;
+            }
+
+            .path {
+                color : white;
+                font-size : 20pt;
+                padding : 5px 15px;
+                background : #3e3e3e;
+            }
+        </style>
     </head>
     <body>
+        <p class="path"><%- path %></p>
         <ul>
-            <%
-                for (var i = 0; i < data.length; i++) {
-                var file = data[i];
-            %>
-            <li><a href="/tree<%- file.path %>"><%- file.name %></a></li>
+            <% for (var i = 0; i < data.length; i++) { %>
+            <li><a href="/tree<%- data[i].path %>"><%- data[i].name %></a></li>
             <% } %>
-            </ul>
+        </ul>
     </body>
 </html>
