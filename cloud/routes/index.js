@@ -42,6 +42,7 @@ var path = require('path');
                             }
                         }
 
+                        res.type('text/plain');
                         res.send(lines.join('\n'));
                     }
                 });
